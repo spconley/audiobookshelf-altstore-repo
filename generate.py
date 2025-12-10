@@ -8,15 +8,9 @@ from dotenv import load_dotenv
 import requests
 import shutil
 
-api_key = ''
-api_key_check = os.getenv('API_KEY')
+API_KEY = os.getenv('API_KEY')
 
-if api_key_check:
-  api_key = api_key_check
-  load_dotenv()
-else:
-  load_dotenv()
-  api_key = os.getenv('API_KEY')
+load_dotenv()
 
 BASE_URL = os.getenv("BASE_URL")
 APP_KEY = os.getenv("APP_KEY")
@@ -39,7 +33,7 @@ if not os.path.exists(CACHE_TO):
 
 headers = {
     'User-Agent': 'Audiobookshelf-Worker-Helper/1.0',
-    'Authorization': f'token {api_key}'  # Replace YOUR_API_KEY with your actual API key
+    'Authorization': f'token {API_KEY}'
 }
 
 response = requests.get(BASE_URL + '/releases', headers=headers)
